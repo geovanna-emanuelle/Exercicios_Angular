@@ -4,6 +4,7 @@ import { PrincipalComponent } from './Lista01/principal/principal.component';
 import { LoginComponent } from './Lista01/login/login.component';
 
 const routes: Routes = [
+  {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'principal', component: PrincipalComponent}
 ];
