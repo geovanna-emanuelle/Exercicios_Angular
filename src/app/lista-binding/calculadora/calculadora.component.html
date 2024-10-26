@@ -1,0 +1,18 @@
+<div>
+    <h2>Calculadora</h2>
+    
+    <input type="number" [(ngModel)]="numero1" placeholder="Número 1" />
+    <input type="number" [(ngModel)]="numero2" placeholder="Número 2" />
+  
+    <select [(ngModel)]="operacao">
+      <option value="">Selecione</option>
+      <option value="soma">Soma</option>
+      <option value="subtracao">Subtração</option>
+      <option value="multiplicacao">Multiplicação</option>
+      <option value="divisao">Divisão</option>
+    </select>
+  
+    <button (click)="calcular()">Calcular</button>
+  
+    <input type="text" [value]="resultado !== null ? resultado : ''" placeholder="Resultado" readonly />
+  </div>
