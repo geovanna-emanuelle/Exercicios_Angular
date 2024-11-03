@@ -1,0 +1,82 @@
+<div class="container">
+  <h2>Gerenciamento de Clientes</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">Endereço</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="clientes.length === 0">
+        <td colspan="3">Nenhum cliente encontrado.</td>
+      </tr>
+      <tr *ngFor="let cli of clientes">
+        <td class="cliente">{{ cli.nome }}</td>
+        <td class="cliente">{{ cli.email }}</td>
+        <td class="cliente">{{ cli.telefone }}</td>
+        <td class="cliente">{{ cli.endereco }}</td>
+        <td class="botoes"><button type="button" class="btn btn-danger" (click)="excluir(cli)">Excluir</button>
+          <button class="btn btn-warning" (click)="selecionarCliente(cli)">Atualizar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Buscar um cliente por ID</h2>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Digite um ID" [(ngModel)]="texto">
+    <button class="btn btn-primary" (click)="pesquisar()">Pesquisar</button>
+  </div>
+
+
+  <h2>Adicionar um novo cliente</h2>
+  <form class="row g-3" (ngSubmit)="adicionarCliente()">
+    <div class="col-md-6">
+      <label for="nome" class="form-label">Nome</label>
+      <input type="text" class="form-control" [(ngModel)]="novoCliente.nome" name="nome">
+    </div>
+    <div class="col-md-6">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" [(ngModel)]="novoCliente.email" name="email">
+    </div>
+    <div class="col-12">
+      <label for="telefone" class="form-label">Telefone</label>
+      <input type="text" class="form-control" [(ngModel)]="novoCliente.telefone" name="telefone">
+    </div>
+    <div class="col-12">
+      <label for="endereco" class="form-label">Endereço</label>
+      <input type="text" class="form-control" [(ngModel)]="novoCliente.endereco" name="endereco">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-success">Adicionar Cliente</button>
+    </div>
+  </form>
+
+  <div *ngIf="clienteAtualizar">
+    <h2>Atualizar Cliente</h2>
+    <form class="row g-3" (ngSubmit)="atualizarCliente()">
+      <div class="col-md-6">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" [(ngModel)]="clienteAtualizar.nome" name="nome">
+      </div>
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" [(ngModel)]="clienteAtualizar.email" name="email">
+      </div>
+      <div class="col-12">
+        <label for="telefone" class="form-label">Telefone</label>
+        <input type="text" class="form-control" [(ngModel)]="clienteAtualizar.telefone" name="telefone">
+      </div>
+      <div class="col-12">
+        <label for="endereco" class="form-label">Endereço</label>
+        <input type="text" class="form-control" [(ngModel)]="clienteAtualizar.endereco" name="endereco">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+      </div>
+    </form>
+  </div>
+</div>
